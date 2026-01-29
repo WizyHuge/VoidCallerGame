@@ -236,7 +236,6 @@ class VoidCallerWindow(arcade.View):
         px = self.player.center_x - self.camera.position[0] + self.window.width // 2
         py = self.player.center_y - self.camera.position[1] + self.window.height // 2
         
-        self.vision.update_light_sources(self.generators, self.light_intensity)
         self.vision.draw_visibility_mask(px, py, self.camera.position[0], self.camera.position[1])
         
         self.camera.use()

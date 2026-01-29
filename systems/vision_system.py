@@ -31,19 +31,8 @@ class VisionSystem:
             self.shock = 1.0
         self.shock = max(0, self.shock - delta_time * 3)
     
-    def reveal_by_echo(self, x, y, radius=80):
-        self.echo_holes.append((x, y, radius, 1.0))
-        self.static_intensity = min(1.0, self.static_intensity + 0.4)
-    
     def highlight_object(self, x, y, color=(0, 255, 0), duration=1.0):
         self.highlighted_objects.append((x, y, color, duration))
-    
-    def update_light_sources(self, generators, light_intensity):
-        self.light_sources = []
-        self.base_light_intensity = light_intensity
-        for gen in generators:
-            if gen.activated:
-                self.light_sources.append((gen.center_x, gen.center_y, 200 * gen.activation_progress))
     
     def get_visibility_alpha(self, target_x, target_y, player_x, player_y, wall_list):
         distance = math.hypot(target_x - player_x, target_y - player_y)
