@@ -193,12 +193,7 @@ class VoidCallerWindow(arcade.View):
         empty_entities = arcade.SpriteList()
         self.pulsar.update(delta_time, self.walls, empty_entities)
         
-        for wave in self.pulsar.waves:
-            wall_hits, _ = wave.update(delta_time, self.walls, empty_entities)
-            
-            for wall in wall_hits:
-                self.vision.reveal_by_echo(wall.center_x, wall.center_y)
-            
+        for wave in self.pulsar.waves:            
             wave_x = getattr(wave, 'center_x', getattr(wave, 'x', None))
             wave_y = getattr(wave, 'center_y', getattr(wave, 'y', None))
             wave_radius = getattr(wave, 'radius', 0)
@@ -207,18 +202,13 @@ class VoidCallerWindow(arcade.View):
                 for generator in self.generators:
                     dist_to_gen = math.hypot(generator.center_x - wave_x, generator.center_y - wave_y)
                     if abs(dist_to_gen - wave_radius) < const.TILE_SIZE * 1.5:
-                        self.vision.highlight_object(generator.center_x, generator.center_y, color=(0, 255, 0), duration=1.5)
+                        self.vision.highlight_object(generator.center_x, generator.center_y, color=(0, 0, 0), duration=1.5)
                 
                 if self.exit_door:
                     dist_to_door = math.hypot(self.exit_door.center_x - wave_x, self.exit_door.center_y - wave_y)
                     if abs(dist_to_door - wave_radius) < const.TILE_SIZE * 1.5:
                         self.vision.highlight_object(self.exit_door.center_x, self.exit_door.center_y, color=(0, 200, 255), duration=1.5)
-        
-        if self.player.change_x != 0 or self.player.change_y != 0:
-            self.step_timer += delta_time
-            if self.step_timer >= self.step_interval:
-                self.step_timer = 0.0
-                self.vision.reveal_by_echo(self.player.center_x, self.player.center_y)
+
         
         self.vision.update(delta_time, False)
         
