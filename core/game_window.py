@@ -193,11 +193,7 @@ class VoidCallerWindow(arcade.View):
         empty_entities = arcade.SpriteList()
         self.pulsar.update(delta_time, self.walls, empty_entities)
         
-        for wave in self.pulsar.waves:
-            wall_hits, _ = wave.update(delta_time, self.walls, empty_entities)
-            for wall in wall_hits:
-                self.vision.reveal_by_echo(wall.center_x, wall.center_y)
-            
+        for wave in self.pulsar.waves:            
             wave_x = getattr(wave, 'center_x', getattr(wave, 'x', None))
             wave_y = getattr(wave, 'center_y', getattr(wave, 'y', None))
             wave_radius = getattr(wave, 'radius', 0)
