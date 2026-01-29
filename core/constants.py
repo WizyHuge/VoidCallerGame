@@ -10,14 +10,10 @@ PLAYER_ANIMATIONS_PATH = "assets/anim/player/"
 FOOTSTEP_LEFT_SOUND_PATH = "assets/sounds/leftLeg.mp3"
 FOOTSTEP_RIGHT_SOUND_PATH = "assets/sounds/rightLeg.mp3"
 FOOTSTEP_INTERVAL = 0.55
-GENERATOR_COUNT = 1
 GENERATOR_ACTIVATION_DISTANCE = 80
-GENERATOR_ACTIVATION_KEY = None
 LIGHT_INTENSITY_BASE = 0.3
 LIGHT_INTENSITY_PER_GENERATOR = 0.15
 MAX_LIGHT_INTENSITY = 1.0
-SCARE_ENABLED = False
-SCARE_MIN_INTERVAL = 8.0
 STORY_MESSAGES = [
     "Система аварийного питания отключена.",
     "Найдите и включите все генераторы.",

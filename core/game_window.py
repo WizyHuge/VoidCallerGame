@@ -237,7 +237,6 @@ class VoidCallerWindow(arcade.View):
         self.vision.draw_visibility_mask(px, py, self.camera.position[0], self.camera.position[1])
         
         self.camera.use()
-        
         self.player.draw()
         self.pulsar.draw()
         
