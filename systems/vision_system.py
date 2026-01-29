@@ -31,6 +31,10 @@ class VisionSystem:
             self.shock = 1.0
         self.shock = max(0, self.shock - delta_time * 3)
     
+    def reveal_by_echo(self, x, y, radius=80):
+        self.echo_holes.append((x, y, radius, 1.0))
+        self.static_intensity = min(1.0, self.static_intensity + 0.4)
+    
     def highlight_object(self, x, y, color=(0, 255, 0), duration=1.0):
         self.highlighted_objects.append((x, y, color, duration))
     
