@@ -221,15 +221,19 @@ class VoidCallerWindow(arcade.View):
         self.floors.draw()
         self.walls.draw()
         
+        self.gui_camera.use()
+        
+        arcade.draw_lrbt_rectangle_filled(0, self.window.width, 0, self.window.height, (0, 0, 0, 230))
+        
+        self.camera.use()
+        
         for generator in self.generators:
             generator.draw()
         
         if self.exit_door:
             self.exit_door.draw()
-        
+            
         self.gui_camera.use()
-        
-        arcade.draw_lrbt_rectangle_filled(0, self.window.width, 0, self.window.height, (0, 0, 0, 230))
         
         px = self.player.center_x - self.camera.position[0] + self.window.width // 2
         py = self.player.center_y - self.camera.position[1] + self.window.height // 2
