@@ -1,3 +1,10 @@
+import os, sys
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.dirname(__file__), '..', relative_path)
+
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
 TILE_SIZE = 64
@@ -6,9 +13,9 @@ PULSE_DURATION = 5
 PULSE_MAX_RADIUS = 400
 PULSE_SPEED = 300
 PULSE_COOLDOWN = 1.5
-PLAYER_ANIMATIONS_PATH = "assets/anim/player/"
-FOOTSTEP_LEFT_SOUND_PATH = "assets/sounds/leftLeg.mp3"
-FOOTSTEP_RIGHT_SOUND_PATH = "assets/sounds/rightLeg.mp3"
+PLAYER_ANIMATIONS_PATH = resource_path("assets/anim/player/")
+FOOTSTEP_LEFT_SOUND_PATH = resource_path("assets/sounds/leftLeg.mp3")
+FOOTSTEP_RIGHT_SOUND_PATH = resource_path("assets/sounds/rightLeg.mp3")
 FOOTSTEP_INTERVAL = 0.55
 GENERATOR_ACTIVATION_DISTANCE = 80
 LIGHT_INTENSITY_BASE = 0.3

@@ -5,7 +5,8 @@ from core import constants as const
 
 class WaveParticle(arcade.Sprite):    
     def __init__(self, x, y, angle, power):
-        super().__init__("assets/particle.png", scale=0.15, center_x=x, center_y=y)
+        super().__init__(const.resource_path("assets/particle.png"), scale=0.15, center_x=x, center_y=y)
+        self.width = self.height = 5
         speed = const.PULSE_SPEED * power
         self.vx = math.cos(angle) * speed
         self.vy = math.sin(angle) * speed
